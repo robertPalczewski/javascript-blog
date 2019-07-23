@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
+/* Variables */
+/* Global */
+/* line 14, sass/style.scss */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* line 18, sass/style.scss */
+body {
+  background: #fff;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #444;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* line 27, sass/style.scss */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* line 32, sass/style.scss */
+.section-title {
+  font-size: 22px;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+}
+
+/* line 37, sass/style.scss */
+.section-title span {
+  text-transform: none;
+  font-weight: 400;
+  color: #777777;
+}
+
+/* Layout */
+/* line 46, sass/style.scss */
+.wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 10px;
+}
+
+/* line 51, sass/style.scss */
+.sidebar {
+  -ms-flex: 1 0 0px;
+      flex: 1 0 0;
+}
+
+/* line 55, sass/style.scss */
+.posts {
+  -ms-flex: 2 0 0px;
+      flex: 2 0 0;
+}
+
+/* line 59, sass/style.scss */
+.sidebar, .posts {
+  background: #fff;
+  margin-right: 10px;
+  padding: 40px;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+
+/* Logo */
+/* line 69, sass/style.scss */
+.logo {
+  font-family: "Sacramento", cursive;
+  font-weight: 400;
+  font-size: 104px;
+  line-height: 1;
+  text-align: center;
+}
+
+/* Lists */
+/* line 79, sass/style.scss */
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 83, sass/style.scss */
+.list .active {
+  font-weight: bold;
+}
+
+/* line 89, sass/style.scss */
+.list-horizontal li {
+  display: inline-block;
+}
+
+/* Authors */
+/* line 97, sass/style.scss */
+.authors li {
+  margin-bottom: 12px;
+}
+
+/* Post */
+/* line 104, sass/style.scss */
+.post {
+  display: none;
+}
+
+/* line 106, sass/style.scss */
+.post.active {
+  display: block;
+}
+
+/* line 111, sass/style.scss */
+.post-author {
+  font-style: italic;
+}
+
+/* line 115, sass/style.scss */
+.post-tags {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 117, sass/style.scss */
+.post-tags p {
+  margin: 0 10px 0 0;
+}
+/*# sourceMappingURL=style.css.map */

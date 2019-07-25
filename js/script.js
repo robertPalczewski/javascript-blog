@@ -1,11 +1,6 @@
 'use strict';
-/* document.getElementById('test-button').addEventListener('click', function(){
-    const links = document.querySelectorAll('.titles a');
-    console.log('links:', links);
-}); */
 {
     const titleClickHandler = function(event){
-//    console.log('Link was clicked!');
         const clickedElement = this;
         event.preventDefault();
         console.log(event);
@@ -44,10 +39,6 @@
 
     const generateTitleLinks = () => {
         console.log('start of generateTitleLinks function');
-        /* [DONE] remove contents of titleList */
-        /*const titleSelector = document.querySelector(optTitleListSelector);
-        console.log(titleSelector);
-        titleSelector.innerHTML = '';*/
         document.querySelector(optTitleListSelector).innerHTML = '';
 
         /* [IN PROGRESS] for each article */
@@ -74,6 +65,5 @@
             link.addEventListener('click', titleClickHandler);
         }
     };
-
     generateTitleLinks();
 }

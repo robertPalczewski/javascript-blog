@@ -47,13 +47,13 @@ body {
 
 /* line 46, sass/style.scss */
 .sidebar {
-  -ms-flex: 1 0 0;
+  -ms-flex: 1 0 0px;
       flex: 1 0 0;
 }
 
 /* line 50, sass/style.scss */
 .posts {
-  -ms-flex: 2 0 0;
+  -ms-flex: 2 0 0px;
       flex: 2 0 0;
 }
 

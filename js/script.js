@@ -37,11 +37,14 @@
 
   };
 
-  const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author';
+  /* todo options */
+  const optArticleSelector = '.post', // article wrapper
+    optTitleSelector = '.post-title', // post tile wrapper
+    optTitleListSelector = '.titles', // titles list at the left sidebar wrapper
+    optArticleTagsSelector = '.post-tags .list', //list <ul> of tags at the bottom of article
+    optArticleAuthorSelector = '.post-author', // author wrapper under article title at the article content
+    optCloudClassCount = 5, // 7.3 number of tag sizes
+    optCloudClassPrefix = 'tag-size-'; // 7.3 prefix for tag size class
 
   function generateTitleLinks(customSelector = '') {
     console.log('10) Start of generateTitleLinks func! *** ');
@@ -91,6 +94,45 @@
   }
 
   generateTitleLinks();
+
+  /* [NEW 7.3] add calculateTagsParams function */
+  function calculateTagsParams(tags) {
+    console.log('23-0-1) start of calculateTagsParams func!: *** ');
+    console.log('23-0-2) calculateTagsParams parameter (tags) value: ' + tags, tags);
+
+    /* [NEW 7.3} add object named params with min and max properties */
+    const params = {
+      min : 999999,
+      max : 0
+    };
+
+    console.log('23-1 start calculateTagsParams func! *** ');
+    console.log('23-2) calculateTagsParams - !start loop - tag in tags: *** ');
+
+    /* [NEW 7.3] add for...in loop for object */
+    for (let tag in tags) {
+      console.log('23-3) calculateTagsParams - how often tag is used: *** ', tag + ' is used ' + tags[tag] + ' times');
+
+      /* [NEW 7.3] assign min and max values to min and max properties of params object */
+      params.max = Math.max(tags[tag], params.max);
+      params.min = Math.min(tags[tag], params.min);
+
+    }
+    console.log('23-6) calculateTagsParams - !end loop - tag in tags: *** ');
+    console.log('23-7) calculateTagsParams: *** ', 'min: ' + params.min + ', max' + params.max);
+    return params;
+  }
+
+  /* [NEW 7.3] todo declare calculateTagClass function with two parameters: count and params */
+  function calculateTagClass (count, params) { // calculateTagClass(allTags[tag], tagsParams)
+    console.log('23-8) start calculateTagClass func! *** ');
+    console.log('23-9) calculateTagClass - count: ', count, 'params: ', params);
+
+    /* [NEW 7.3] calculate size form 1 -5 */
+    console.log('23-10) calculateTagClass: *** tag-size-' + Math.round((count / params.max) * optCloudClassCount) + ', ', Math.round((count / params.max) * optCloudClassCount));
+    return Math.round((count / params.max) * optCloudClassCount);
+
+  }
 
   function generateTags() {
     console.log('24) start of generateTags func! *** ');
@@ -159,10 +201,14 @@
     /* [NEW 7.3] find list of tags in right column */
     const tagList = document.querySelector('.tags');
 
-    /* [NEW 7.3] todo add html from allTags to tagList */
+    /* [NEW 7.3] add html from allTags to tagList */
     // tagList.innerHTML = allTags.join(' ');
-    console.log('36-1) generateTags - allTags: ***', allTags);
-    console.log('36-2) generateTags - tagList.innerHTML = allTags.join(\' \'): *** ', tagList);
+    // console.log('36-1) generateTags - allTags: ***', allTags);
+    // console.log('36-2) generateTags - tagList.innerHTML = allTags.join(\' \'): *** ', tagList);
+
+    // [NEW 7.3] declare const tagsParams  = calculateTagsParams(allTags); */
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('36-2) generateTags - tagsParams: *** ' + tagsParams, tagsParams);
 
     /* [NEW 7.3] create variable for all links HTML code */
     let allTagsHTML = '';
@@ -170,7 +216,7 @@
     /* [NEW 7.3] START LOOP: for each tag in allTags: */
     for (let tag in allTags) {
       /* [NEW 7.3] generate code of a link and add it to allTagsHTML */
-      allTagsHTML += '<li><a href="#tag-' + tag + '">' +  tag + ' (' + allTags[tag] + ')</a></li>';
+      allTagsHTML += '<li><a class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' +  tag + ' (' + allTags[tag] + ')</a></li>';
       console.log('36-3) generateTags - allTagsHTML: *** ', allTagsHTML);
 
       /* [NEW 7.3] END LOOP: for each tag in allTags: */

@@ -95,8 +95,8 @@
   function generateTags() {
     console.log('24) start of generateTags func! *** ');
 
-    /* [NEW 7.3] create a new variable allTags with an empty array */
-    let allTags = [];
+    /* [NEW 7.3] create a new variable allTags with an empty object */
+    let allTags = {};
     console.log('24-1) generateTags - allTags array', allTags);
 
     /* find all articles */
@@ -135,38 +135,51 @@
         html = html + ' ' + linkHTML;
         console.log('33) generateTags - html: *** ', linkHTML);
 
-        /* [NEW 7.3] todo check if this link is NOT already in allTags */
-        if(allTags.indexOf(linkHTML) === -1){
-          console.log('33-1) generateTags - allTags.indexOf(linkHTML) true or false: *** ', (allTags.indexOf(linkHTML) === -1));
-          /* [NEW 7.3] todo add generated code to allTags array */
-          allTags.push(linkHTML);
+        /* [NEW 7.3] check if this link is NOT already in allTags */
+        if(!allTags.hasOwnProperty(tag)){
+          allTags[tag] = 1;
+        } else {
+          allTags[tag]++;
         }
-        console.log('33-2) generateTags allTags.push(linkHTML): *** ' + allTags);
+
+        console.log('33-2) generateTags allTags.push(linkHTML): *** ', allTags);
 
         /* END LOOP: for each tag */
       }
       console.log('34) generateTags - !end loop - tag of articleTagsArray: *** ');
 
-      /* [NEW 7.3] todo find list of tags in right column */
-      const tagList = document.querySelector('.tags');
-
-      /* [NEW 7.3] todo add html from allTags to tagList */
-      tagList.innerHTML = allTags.join(' ');
-
       /* insert HTML of all the links into the tags wrapper */
       article.querySelector(optArticleTagsSelector).insertAdjacentHTML('beforeend', html);
-      console.log('35) generateTags - article.querySelector(optArticleTagsSelector): ***', article.querySelector(optArticleTagsSelector));
+      console.log('35) generateTags - article.querySelector(optArticleTagsSelector): *** ', article.querySelector(optArticleTagsSelector));
 
       /* END LOOP: for every article: */
     }
     console.log('36) generateTags - !end loop - article of articles: *** ');
 
-    /* [NEW 7.3] todo find list of tags in right column */
+    /* [NEW 7.3] find list of tags in right column */
     const tagList = document.querySelector('.tags');
 
     /* [NEW 7.3] todo add html from allTags to tagList */
-    tagList.innerHTML = allTags.join(' ');
-    console.log('36-1) tagList.innerHTML = allTags.join(\' \'): *** ', tagList);
+    // tagList.innerHTML = allTags.join(' ');
+    console.log('36-1) generateTags - allTags: ***', allTags);
+    console.log('36-2) generateTags - tagList.innerHTML = allTags.join(\' \'): *** ', tagList);
+
+    /* [NEW 7.3] create variable for all links HTML code */
+    let allTagsHTML = '';
+
+    /* [NEW 7.3] START LOOP: for each tag in allTags: */
+    for (let tag in allTags) {
+      /* [NEW 7.3] generate code of a link and add it to allTagsHTML */
+      allTagsHTML += '<li><a href="#tag-' + tag + '">' +  tag + ' (' + allTags[tag] + ')</a></li>';
+      console.log('36-3) generateTags - allTagsHTML: *** ', allTagsHTML);
+
+      /* [NEW 7.3] END LOOP: for each tag in allTags: */
+    }
+
+    /*[NEW 7.3] add html from allTagsHTML to tagList */
+    tagList.innerHTML = allTagsHTML;
+    console.log('36-4) generateTags - tagList: *** ', tagList);
+
   }
 
   generateTags();

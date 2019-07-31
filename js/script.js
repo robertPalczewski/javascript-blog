@@ -44,7 +44,8 @@
     optArticleTagsSelector = '.post-tags .list', //list <ul> of tags at the bottom of article
     optArticleAuthorSelector = '.post-author', // author wrapper under article title at the article content
     optCloudClassCount = 5, // 7.3 number of tag sizes
-    optCloudClassPrefix = 'tag-size-'; // 7.3 prefix for tag size class
+    optCloudClassPrefix = 'tag-size-', // 7.3 prefix for tag size class
+    optAuthorsListSelector = '.list.authors'; // 7.3 authors list <ul> at the right sidebar
 
   function generateTitleLinks(customSelector = '') {
     console.log('10) Start of generateTitleLinks func! *** ');
@@ -106,7 +107,7 @@
       max : 0
     };
 
-    console.log('23-1 start calculateTagsParams func! *** ');
+    console.log('23-1) start calculateTagsParams func! *** ');
     console.log('23-2) calculateTagsParams - !start loop - tag in tags: *** ');
 
     /* [NEW 7.3] add for...in loop for object */
@@ -306,10 +307,40 @@
 
   addClickListenersToTags();
 
-  /* ******************************************************************************************* */
+  /* [NEW 7.3] add calculateAuthorParams function */
+  function calculateAuthorParams(authors) {
+    console.log('54-1) start of calculateAuthorsParams func!: *** ');
+    console.log('54-2) calculateAuthorsParams parameter (authors) value: ' + authors, authors);
 
+    /* [NEW 7.3} add object named params with min and max properties */
+    const params = {
+      min : 999999,
+      max : 0
+    };
+
+    console.log('54-3) start calculateAuthorsParams func! *** ');
+    console.log('54-4) calculateAuthorsParams - !start loop - author in authors: *** ');
+
+    /* [NEW 7.3] add for...in loop for object */
+    for (let author in authors) {
+      console.log('54-5) calculateAuthorsParams - how often tag is used: *** ', author + ' is used ' + authors[author] + ' times');
+
+      /* [NEW 7.3] assign min and max values to min and max properties of params object */
+      params.max = Math.max(authors[author], params.max);
+      params.min = Math.min(authors[author], params.min);
+
+    }
+    console.log('54-6) calculateAuthorsParams - !end loop - author in authors: *** ');
+    console.log('54-7) calculateAuthorsParams: *** ', 'min: ' + params.min + ', max' + params.max);
+    return params;
+  }
+
+  /* generateAuthors function 7.3 */
   const generateAuthors = function() {
     console.log('55) start of generateAuthors func! *** ');
+
+    /* [NEW 7.3] create a new variable allAuthors with an empty object */
+    let allAuthors = {};
 
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
@@ -331,8 +362,46 @@
       /* insert HTML into the author wrapper */
       authorWrapper.innerHTML = linkHTML;
       console.log('60) generateAuthors - [inserting link to wrapper] authorWrapper.innerHTML = html: *** ', authorWrapper);
+
+      /* [NEW 7.3] check if this link is NOT already in allAuthors */
+      if(!allAuthors.hasOwnProperty(author)){
+        allAuthors[author] = 1;
+      } else {
+        allAuthors[author] ++;
+      }
+      console.log('60-0-1) generateAuthors generating allAuthors: *** ', allAuthors);
+
     }
     console.log('61) generateAuthors - !end loop - article of articles: *** ');
+    console.log('61-1) generateAuthors Complete allAuthors object: *** ' + allAuthors, allAuthors);
+
+    /* [NEW 7.3] find list of authors in right column */
+    const authorList = document.querySelector(optAuthorsListSelector);
+    console.log('61-2 generateAuthors - authorList = document.querySelector(optAuthorsListSelector): *** ', authorList);
+
+    // [NEW 7.3] declare const authorsParams  = calculateAuthorParams(allAuthors); */
+    const authorsParams = calculateAuthorParams(allAuthors);
+    console.log('61-3) generateAuthors - authorsParams: *** ' + authorsParams, authorsParams);
+
+    /* [NEW 7.3] create variable for all links HTML code */
+    let allAuthorsHTML = '';
+
+    /* [NEW 7.3] START LOOP: for each author in allAuthors: */
+    console.log('61-4) generateAuthors - !start loop - author in allAuthors: *** ');
+    for (let author in allAuthors) {
+      const authorHTML = author.toLowerCase().replace(" ", '-');
+      /* [NEW 7.3] generate code of a link and add it to allAuthorsHTML */
+      allAuthorsHTML += '<li><a href="#author-' + authorHTML + '"><span class="author-name">' +  author + ' (' + allAuthors[author] + ')</span></a></li>';
+      console.log('61-5) generateAuthors - generating... allAuthorsHTML: *** ', allAuthorsHTML);
+
+      /* [NEW 7.3] END LOOP: for each tag in allTags: */
+    }
+    console.log('61-6) generateAuthors - !end loop - author in allAuthors: *** ');
+    console.log('61-7) generateAuthors - Complete allAuthorsHTML: *** ', allAuthorsHTML);
+
+    /*[NEW 7.3] add html from allAuthorsHTML to authorsList */
+    authorList.innerHTML = allAuthorsHTML;
+    console.log('61-8) generateAuthors - authorList: *** ', authorList);
 
   };
 

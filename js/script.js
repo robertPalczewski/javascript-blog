@@ -37,7 +37,7 @@
 
   };
 
-  /* todo options */
+  /* options */
   const optArticleSelector = '.post', // article wrapper
     optTitleSelector = '.post-title', // post tile wrapper
     optTitleListSelector = '.titles', // titles list at the left sidebar wrapper
@@ -123,7 +123,7 @@
     return params;
   }
 
-  /* [NEW 7.3] todo declare calculateTagClass function with two parameters: count and params */
+  /* [NEW 7.3] declare calculateTagClass function with two parameters: count and params */
   function calculateTagClass (count, params) { // calculateTagClass(allTags[tag], tagsParams)
     console.log('23-8) start calculateTagClass func! *** ');
     console.log('23-9) calculateTagClass - count: ', count, 'params: ', params);
@@ -216,7 +216,7 @@
     /* [NEW 7.3] START LOOP: for each tag in allTags: */
     for (let tag in allTags) {
       /* [NEW 7.3] generate code of a link and add it to allTagsHTML */
-      allTagsHTML += '<li><a class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' +  tag + ' (' + allTags[tag] + ')</a></li>';
+      allTagsHTML += '<li><a class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' +  tag /*+ ' (' + allTags[tag] + ')*/ + ' </a></li>';
       console.log('36-3) generateTags - allTagsHTML: *** ', allTagsHTML);
 
       /* [NEW 7.3] END LOOP: for each tag in allTags: */

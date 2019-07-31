@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
 /* Variables */
 /* Global */
-/* line 9, sass/style.scss */
+/* line 15, sass/style.scss */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* line 13, sass/style.scss */
+/* line 19, sass/style.scss */
 body {
   background: #fff;
   font-family: "Source Sans Pro", sans-serif;
@@ -16,13 +16,13 @@ body {
   line-height: 1.7;
 }
 
-/* line 22, sass/style.scss */
+/* line 28, sass/style.scss */
 .container {
   max-width: 1140px;
   margin: 0 auto;
 }
 
-/* line 27, sass/style.scss */
+/* line 33, sass/style.scss */
 .section-title {
   font-size: 22px;
   text-transform: uppercase;
@@ -30,7 +30,7 @@ body {
   font-weight: 600;
 }
 
-/* line 33, sass/style.scss */
+/* line 39, sass/style.scss */
 .section-title span {
   text-transform: none;
   font-weight: 400;
@@ -38,26 +38,26 @@ body {
 }
 
 /* Layout */
-/* line 41, sass/style.scss */
+/* line 47, sass/style.scss */
 .wrapper {
   display: -ms-flexbox;
   display: flex;
   margin-left: 10px;
 }
 
-/* line 46, sass/style.scss */
+/* line 52, sass/style.scss */
 .sidebar {
   -ms-flex: 1 0 0px;
       flex: 1 0 0;
 }
 
-/* line 50, sass/style.scss */
+/* line 56, sass/style.scss */
 .posts {
   -ms-flex: 2 0 0px;
       flex: 2 0 0;
 }
 
-/* line 54, sass/style.scss */
+/* line 60, sass/style.scss */
 .sidebar, .posts {
   background: #fff;
   margin-right: 10px;
@@ -67,7 +67,7 @@ body {
 }
 
 /* Logo */
-/* line 63, sass/style.scss */
+/* line 69, sass/style.scss */
 .logo {
   font-family: "Sacramento", cursive;
   font-weight: 400;
@@ -77,52 +77,82 @@ body {
 }
 
 /* Lists */
-/* line 72, sass/style.scss */
+/* line 78, sass/style.scss */
 .list {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-/* line 77, sass/style.scss */
+/* line 83, sass/style.scss */
 .list .active {
   font-weight: bold;
 }
 
-/* line 83, sass/style.scss */
+/* line 89, sass/style.scss */
 .list-horizontal li {
   display: inline-block;
 }
 
+/* line 94, sass/style.scss */
+ul.list.tags li {
+  display: inline;
+}
+
+/* line 98, sass/style.scss */
+ul.list.tags .tag-size-5 {
+  font-size: 225%;
+}
+
+/* line 101, sass/style.scss */
+ul.list.tags .tag-size-4 {
+  font-size: 175%;
+}
+
+/* line 104, sass/style.scss */
+ul.list.tags .tag-size-3 {
+  font-size: 125%;
+}
+
+/* line 107, sass/style.scss */
+ul.list.tags .tag-size-2 {
+  font-size: 100%;
+}
+
+/* line 110, sass/style.scss */
+ul.list.tags .tag-size-1 {
+  font-size: 75%;
+}
+
 /* Authors */
-/* line 90, sass/style.scss */
+/* line 117, sass/style.scss */
 .authors li {
   margin-bottom: 12px;
 }
 
 /* Post */
-/* line 97, sass/style.scss */
+/* line 124, sass/style.scss */
 .post {
   display: none;
 }
 
-/* line 100, sass/style.scss */
+/* line 127, sass/style.scss */
 .post.active {
   display: block;
 }
 
-/* line 105, sass/style.scss */
+/* line 132, sass/style.scss */
 .post-author {
   font-style: italic;
 }
 
-/* line 109, sass/style.scss */
+/* line 136, sass/style.scss */
 .post-tags {
   display: -ms-flexbox;
   display: flex;
 }
 
-/* line 112, sass/style.scss */
+/* line 139, sass/style.scss */
 .post-tags p {
   margin: 0 10px 0 0;
 }

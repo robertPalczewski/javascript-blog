@@ -118,6 +118,7 @@
 
       /* [NEW 7.3] assign min and max values to min and max properties of params object */
       params.max = Math.max(tags[tag], params.max);
+      // params.max = Math.max(tags[tag], params.max);
       params.min = Math.min(tags[tag], params.min);
 
     }
@@ -181,7 +182,7 @@
         console.log('33) generateTags - html: *** ', linkHTML);
 
         /* [NEW 7.3] check if this link is NOT already in allTags */
-        if(!allTags.hasOwnProperty.call(tag)){
+        if(!Object.prototype.hasOwnProperty.call(allTags, tag)){ // .call added after eslint error log
           allTags[tag] = 1;
         } else {
           allTags[tag]++;
@@ -366,7 +367,7 @@
       console.log('60) generateAuthors - [inserting link to wrapper] authorWrapper.innerHTML = html: *** ', authorWrapper);
 
       /* [NEW 7.3] check if this link is NOT already in allAuthors */
-      if(!allAuthors.hasOwnProperty.call(author)){
+      if(!Object.prototype.hasOwnProperty.call(allAuthors, author)){ // .call added after eslint error log
         allAuthors[author] = 1;
       } else {
         allAuthors[author] ++;

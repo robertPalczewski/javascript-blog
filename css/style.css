@@ -94,65 +94,65 @@ body {
   display: inline-block;
 }
 
-/* line 94, sass/style.scss */
+/* line 95, sass/style.scss */
 ul.list.tags li {
   display: inline;
 }
 
-/* line 98, sass/style.scss */
+/* line 99, sass/style.scss */
 ul.list.tags .tag-size-5 {
   font-size: 225%;
 }
 
-/* line 101, sass/style.scss */
+/* line 103, sass/style.scss */
 ul.list.tags .tag-size-4 {
   font-size: 175%;
 }
 
-/* line 104, sass/style.scss */
+/* line 107, sass/style.scss */
 ul.list.tags .tag-size-3 {
   font-size: 125%;
 }
 
-/* line 107, sass/style.scss */
+/* line 111, sass/style.scss */
 ul.list.tags .tag-size-2 {
   font-size: 100%;
 }
 
-/* line 110, sass/style.scss */
+/* line 115, sass/style.scss */
 ul.list.tags .tag-size-1 {
   font-size: 75%;
 }
 
 /* Authors */
-/* line 117, sass/style.scss */
+/* line 122, sass/style.scss */
 .authors li {
   margin-bottom: 12px;
 }
 
 /* Post */
-/* line 124, sass/style.scss */
+/* line 129, sass/style.scss */
 .post {
   display: none;
 }
 
-/* line 127, sass/style.scss */
+/* line 132, sass/style.scss */
 .post.active {
   display: block;
 }
 
-/* line 132, sass/style.scss */
+/* line 137, sass/style.scss */
 .post-author {
   font-style: italic;
 }
 
-/* line 136, sass/style.scss */
+/* line 141, sass/style.scss */
 .post-tags {
   display: -ms-flexbox;
   display: flex;
 }
 
-/* line 139, sass/style.scss */
+/* line 144, sass/style.scss */
 .post-tags p {
   margin: 0 10px 0 0;
 }

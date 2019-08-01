@@ -90,23 +90,28 @@ body {
     display: inline-block;
   }
 }
+
 ul.list.tags {
-  & li {
+  li {
     display: inline;
   }
 
   .tag-size-5 {
     font-size: $font-tag-size-5;
   }
+
   .tag-size-4 {
     font-size: $font-tag-size-4;
   }
+
   .tag-size-3 {
     font-size: $font-tag-size-3;
   }
+
   .tag-size-2 {
     font-size: $font-tag-size-2;
   }
+
   .tag-size-1 {
     font-size: $font-tag-size-1;
   }

@@ -1,6 +1,6 @@
 'use strict';
 {
-  /* options */
+  /* options */ //todo 7.4
   const opts = {
     articleSelector: '.post', // article wrapper
     titleSelector: '.post-title', // post tile wrapper
@@ -181,7 +181,7 @@
         console.log('33) generateTags - html: *** ', linkHTML);
 
         /* [NEW 7.3] check if this link is NOT already in allTags */
-        if(!allTags.hasOwnProperty(tag)){
+        if(!allTags.hasOwnProperty.call(tag)){
           allTags[tag] = 1;
         } else {
           allTags[tag]++;
@@ -366,7 +366,7 @@
       console.log('60) generateAuthors - [inserting link to wrapper] authorWrapper.innerHTML = html: *** ', authorWrapper);
 
       /* [NEW 7.3] check if this link is NOT already in allAuthors */
-      if(!allAuthors.hasOwnProperty(author)){
+      if(!allAuthors.hasOwnProperty.call(author)){
         allAuthors[author] = 1;
       } else {
         allAuthors[author] ++;
@@ -391,7 +391,7 @@
     /* [NEW 7.3] START LOOP: for each author in allAuthors: */
     console.log('61-4) generateAuthors - !start loop - author in allAuthors: *** ');
     for (let author in allAuthors) {
-      const authorHTML = author.toLowerCase().replace(" ", '-');
+      const authorHTML = author.toLowerCase().replace(' ', '-');
       /* [NEW 7.3] generate code of a link and add it to allAuthorsHTML */
       allAuthorsHTML += '<li><a href="#author-' + authorHTML + '"><span class="author-name">' +  author + ' (' + allAuthors[author] + ')</span></a></li>';
       console.log('61-5) generateAuthors - generating... allAuthorsHTML: *** ', allAuthorsHTML);
